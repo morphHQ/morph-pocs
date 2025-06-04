@@ -947,10 +947,10 @@
   resolved "https://registry.yarnpkg.com/@radix-ui/rect/-/rect-1.1.1.tgz#78244efe12930c56fd255d7923865857c41ac8cb"
   integrity sha512-HPwpGIzkl28mWyZqG52jiqDJ12waP11Pa1lGoiyUkIEuMLBP0oeK/C89esbXrxsky5we7dfd8U58nm0SgAWpVw==
 
-"@runmorph/atoms@^0.0.18":
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/@runmorph/atoms/-/atoms-0.0.18.tgz#ec225695c9c898f31d6f0cfb06471347695c0928"
-  integrity sha512-qt4Ogog8z2yYPti2XHQT8Jf69ajkeQ0tqN2mYVq4IGG/IeOUX9LdMum/S4roEAWBHM9hR5tfCucaAVB3hB3YLA==
+"@runmorph/atoms@^0.0.19":
+  version "0.0.19"
+  resolved "https://registry.yarnpkg.com/@runmorph/atoms/-/atoms-0.0.19.tgz#410c3f05dc625e1cae47124005e3ffb7f5050e90"
+  integrity sha512-LG2cXjScMNqfAhlbhmVwt9W1S5eHsNEOGIqhUWiH3QLpqXowRxhe0OlJs2ioo9JgjHSxxiqOE7eOU/LnspBWnA==
   dependencies:
     "@hookform/resolvers" "^3.10.0"
     "@radix-ui/react-checkbox" "^1.1.4"
@@ -964,27 +964,31 @@
     react-hook-form "^7.54.2"
     zod "^3.24.1"
 
-"@runmorph/cdk@^0.0.26":
-  version "0.0.26"
-  resolved "https://registry.yarnpkg.com/@runmorph/cdk/-/cdk-0.0.26.tgz#5fad5a5dd85dfa7b62318f2500649ff109908d08"
-  integrity sha512-VRUzL7JJulTNYzEdKLihN7BlLSuADHJKvHA7ZSSdgced5jwEkfgoio/iBOx4LIqw8Uvdt4StpKC/aipgqprKyw==
+"@runmorph/cdk@0.0.29":
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/@runmorph/cdk/-/cdk-0.0.29.tgz#1d81f7e62ff1012909aee274934d0e3ef1f15b22"
+  integrity sha512-jK0sUIlqGpdLnaxGE9ctWnKqB+8sYAVEUP6Mzgh9y8KHwvTk0W6snoxHXbpfuOcJD5ShX6SPS7NizXBdx1BLvA==
   dependencies:
+    date-fns "^4.1.0"
     fs "^0.0.1-security"
+    libphonenumber-js "^1.12.6"
     path "^0.12.7"
+    tldts "^6.1.85"
+    validator "^13.15.0"
 
-"@runmorph/cloud@^0.0.11":
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/@runmorph/cloud/-/cloud-0.0.11.tgz#6b058f166ffcbe27cb04b543068e2dd463416123"
-  integrity sha512-R5GnVxkLnISTTj06UF76q5W0QabmB04ykmwIz3JwUrEasEBalKZfq/fIZ/Sk00ujjhBXFm3J4U9UlO6gHi9RWQ==
+"@runmorph/cloud@^0.0.13":
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/@runmorph/cloud/-/cloud-0.0.13.tgz#feb023fe5e66cddfd4f40e2bd6b8093e70dc1cf8"
+  integrity sha512-96vBGJs9lhTIQoqepVOE0xD2UZw/gF+53PW/W+BtSMNzz4U9cVF+PJ9/yd3o3nOyR1AJTICBk+aPbSUKnlGxyA==
   dependencies:
     "@runmorph/connector-aircall" "0.0.1"
     "@runmorph/connector-calendly" "0.0.1"
     "@runmorph/connector-dialpad" "0.0.1"
     "@runmorph/connector-gong" "0.0.1"
-    "@runmorph/connector-hubspot" "0.0.17"
+    "@runmorph/connector-hubspot" "0.0.19"
     "@runmorph/connector-pipedrive" "0.0.15"
     "@runmorph/connector-salesforce" "0.0.11"
-    "@runmorph/core" "0.0.20"
+    "@runmorph/core" "0.0.22"
 
 "@runmorph/connector-aircall@0.0.1":
   version "0.0.1"
@@ -1010,10 +1014,10 @@
   dependencies:
     jsonwebtoken "^9.0.2"
 
-"@runmorph/connector-hubspot@0.0.17":
-  version "0.0.17"
-  resolved "https://registry.yarnpkg.com/@runmorph/connector-hubspot/-/connector-hubspot-0.0.17.tgz#4047f024526f4a69828b1dab7730b5d71afdac25"
-  integrity sha512-wQJJ+NbEbIVug8IfTS7DmCk0vHab6P2P6+N1//ad0fxhvfRMOULBnlDpM1TW83dRoQOxZq+IRLaHQ88dLhoYQA==
+"@runmorph/connector-hubspot@0.0.19":
+  version "0.0.19"
+  resolved "https://registry.yarnpkg.com/@runmorph/connector-hubspot/-/connector-hubspot-0.0.19.tgz#12b3b4d315515da5d3ae59c50165a36a0dd6aa45"
+  integrity sha512-/IuOXvZIttpabPxi4Na8Nbbrg9Y1Cfxsymra5Z0n0AiI3c0WZVF3edV+u6Kjh8kpzm68XZp0R2qPexE81Pjv8w==
 
 "@runmorph/connector-pipedrive@0.0.15":
   version "0.0.15"
@@ -1025,23 +1029,23 @@
   resolved "https://registry.yarnpkg.com/@runmorph/connector-salesforce/-/connector-salesforce-0.0.11.tgz#33d1d9d55510f5f44d64e8649df3820b0263b9d1"
   integrity sha512-x9YVh9nUb9vY7TQ9TRl4g1S6OoZU30213jVLsFnggU9l6q3wN2K49lfzejEBCKBy/539uCbQ1WQpgME5r/Dr9Q==
 
-"@runmorph/core@0.0.20":
-  version "0.0.20"
-  resolved "https://registry.yarnpkg.com/@runmorph/core/-/core-0.0.20.tgz#81e92ec3807cf9de049398ef3e57a47fd19e32b8"
-  integrity sha512-W99YX/hl+xpdCl3T3MiKFdpso2kTmQsJMQDVTV2gjCGhWK2qnshDQC7YIK2gRssBJZa3MZ2dHTYu/F/jKGtEMw==
+"@runmorph/core@0.0.22":
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/@runmorph/core/-/core-0.0.22.tgz#3257a8dce7b487325ec3c9685e43dc2778a7522a"
+  integrity sha512-+JNPJGnXB+/x3Ui2FFWkB931R0celk/mqudbUz+SQxOo/Cutndd7MumVqxz9BJ9sT36JDOI8GvVz8lrtYZlpiA==
   dependencies:
-    "@runmorph/cdk" "^0.0.26"
-    "@runmorph/resource-models" "^0.0.5"
-    axios "^0.21.1"
+    "@runmorph/cdk" "0.0.29"
+    "@runmorph/resource-models" "0.0.9"
+    axios "^1.7.2"
     jsonwebtoken "^9.0.2"
     uuid "^10.0.0"
 
-"@runmorph/resource-models@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@runmorph/resource-models/-/resource-models-0.0.5.tgz#49db0ff14921860fb4793f0031192a84e603368f"
-  integrity sha512-BzoGy4ZRn5fWewkAAw9kqpE/jeFiS9vmFKuR97iNBzEy1n1eR9s+w8w+snlTS+jN7EXYyUhFdDrAczZSPUBkvw==
+"@runmorph/resource-models@0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@runmorph/resource-models/-/resource-models-0.0.9.tgz#036ebceb5fed5b2ef542c8703a78ac63c0dad30d"
+  integrity sha512-fL6VGLd7Gx9JkQfXl7KltL0c79Eb+ZZtgo+tw2DIlhIKD6nwJM542Mxp4CaUZ9tRx5J2y3O38LHnr4hN+AAAMA==
   dependencies:
-    zod "^3.23.8"
+    zod "^3.24.1"
 
 "@swc/counter@0.1.3":
   version "0.1.3"
@@ -1152,12 +1156,14 @@ autoprefixer@^10.4.20:
     picocolors "^1.1.1"
     postcss-value-parser "^4.2.0"
 
-axios@^0.21.1:
-  version "0.21.4"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.4.tgz#c67b90dc0568e5c1cf2b0b858c43ba28e2eda575"
-  integrity sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==
+axios@^1.7.2:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.9.0.tgz#25534e3b72b54540077d33046f77e3b8d7081901"
+  integrity sha512-re4CqKTJaURpzbLHtIi6XpDv20/CnpXOtjRY5/CU32L8gU8ek9UIivcfvSWvmKEngmVbrUtPpdDwWDWL7DNHvg==
   dependencies:
-    follow-redirects "^1.14.0"
+    follow-redirects "^1.15.6"
+    form-data "^4.0.0"
+    proxy-from-env "^1.1.0"
 
 balanced-match@^1.0.0:
   version "1.0.2"
@@ -1345,7 +1351,7 @@ csstype@^3.0.2:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.3.tgz#d80ff294d114fb0e6ac500fbf85b60137d7eff81"
   integrity sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==
 
-date-fns@latest:
+date-fns@^4.1.0, date-fns@latest:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-4.1.0.tgz#64b3d83fff5aa80438f5b1a633c2e83b8a1c2d14"
   integrity sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg==
@@ -1483,7 +1489,7 @@ fill-range@^7.1.1:
   dependencies:
     to-regex-range "^5.0.1"
 
-follow-redirects@^1.14.0:
+follow-redirects@^1.15.6:
   version "1.15.9"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.9.tgz#a604fa10e443bf98ca94228d9eebcc2e8a2c8ee1"
   integrity sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==
@@ -1717,6 +1723,11 @@ jws@^3.2.2:
   dependencies:
     jwa "^1.4.1"
     safe-buffer "^5.0.1"
+
+libphonenumber-js@^1.12.6:
+  version "1.12.8"
+  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.12.8.tgz#20e5b57f24e60359d795e2fa2ee185776331e34f"
+  integrity sha512-f1KakiQJa9tdc7w1phC2ST+DyxWimy9c3g3yeF+84QtEanJr2K77wAmBPP22riU05xldniHsvXuflnLZ4oysqA==
 
 lilconfig@^3.0.0, lilconfig@^3.1.3:
   version "3.1.3"
@@ -2016,6 +2027,11 @@ process@^0.11.1, process@^0.11.10:
   version "0.11.10"
   resolved "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
   integrity sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==
+
+proxy-from-env@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/proxy-from-env/-/proxy-from-env-1.1.0.tgz#e102f16ca355424865755d2c9e8ea4f24d58c3e2"
+  integrity sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==
 
 qs@^6.13.1:
   version "6.14.0"
@@ -2360,6 +2376,18 @@ thenify-all@^1.0.0:
   dependencies:
     any-promise "^1.0.0"
 
+tldts-core@^6.1.86:
+  version "6.1.86"
+  resolved "https://registry.yarnpkg.com/tldts-core/-/tldts-core-6.1.86.tgz#a93e6ed9d505cb54c542ce43feb14c73913265d8"
+  integrity sha512-Je6p7pkk+KMzMv2XXKmAE3McmolOQFdxkKw0R8EYNr7sELW46JqnNeTX8ybPiQgvg1ymCoF8LXs5fzFaZvJPTA==
+
+tldts@^6.1.85:
+  version "6.1.86"
+  resolved "https://registry.yarnpkg.com/tldts/-/tldts-6.1.86.tgz#087e0555b31b9725ee48ca7e77edc56115cd82f7"
+  integrity sha512-WMi/OQ2axVTf/ykqCQgXiIct+mSQDFdH2fkwhPwgEwvJ1kSzZRiinb0zF2Xb8u4+OqPChmyI6MEu4EezNJz+FQ==
+  dependencies:
+    tldts-core "^6.1.86"
+
 to-regex-range@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/to-regex-range/-/to-regex-range-5.0.1.tgz#1648c44aae7c8d988a326018ed72f5b4dd0392e4"
@@ -2447,6 +2475,11 @@ uuid@^10.0.0:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-10.0.0.tgz#5a95aa454e6e002725c79055fd42aaba30ca6294"
   integrity sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==
 
+validator@^13.15.0:
+  version "13.15.15"
+  resolved "https://registry.yarnpkg.com/validator/-/validator-13.15.15.tgz#246594be5671dc09daa35caec5689fcd18c6e7e4"
+  integrity sha512-BgWVbCI72aIQy937xbawcs+hrVaN/CZ2UwutgaJ36hGqRrLNM+f5LUT/YPRbo8IV/ASeFzXszezV+y2+rq3l8A==
+
 webidl-conversions@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-3.0.1.tgz#24534275e2a7bc6be7bc86611cc16ae0a5654871"
@@ -2490,7 +2523,7 @@ yaml@^2.3.4:
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.8.0.tgz#15f8c9866211bdc2d3781a0890e44d4fa1a5fff6"
   integrity sha512-4lLa/EcQCB0cJkyts+FpIRx5G/llPxfP6VQU5KByHEhLxY3IJCH0f0Hy1MHI8sClTvsIb8qwRJ6R/ZdlDJ/leQ==
 
-zod@^3.23.8, zod@^3.24.1:
+zod@^3.24.1:
   version "3.25.48"
   resolved "https://registry.yarnpkg.com/zod/-/zod-3.25.48.tgz#6c2b536fbb519905e8f4a4ac58743de4d5331bb2"
   integrity sha512-0X1mz8FtgEIvaxGjdIImYpZEaZMrund9pGXm3M6vM7Reba0e2eI71KPjSCGXBfwKDPwPoywf6waUKc3/tFvX2Q==

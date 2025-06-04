@@ -6,72 +6,119 @@ import { morph } from "@/morph";
 import { DashboardHeader } from "@/components/navigation/dashboard-header";
 
 /**
- * Props interface for the ConnectionPage component
- * @interface ConnectionPageProps
- * @property {Promise<{ connectorId: ConnectorId }>} params - Route parameters containing the connector ID
+ * Route parameters for the connection page
+ */
+interface ConnectionPageParams {
+  connectorId: ConnectorId;
+}
+
+/**
+ * Props for the ConnectionPage component
  */
 interface ConnectionPageProps {
-  params: Promise<{
-    connectorId: ConnectorId;
-  }>;
+  params: Promise<ConnectionPageParams>;
 }
+
+/**
+ * Type definition for valid operations
+ */
+type ValidOperation =
+  | "genericContact::create"
+  | "genericContact::update"
+  | "genericContact::retrieve"
+  | "genericContact::list"
+  | "genericContact::fieldRead"
+  | "genericContact::fieldWrite"
+  | "genericCompany::create"
+  | "genericCompany::update"
+  | "genericCompany::retrieve"
+  | "genericCompany::list"
+  | "genericCompany::fieldRead"
+  | "genericCompany::fieldWrite"
+  | "crmOpportunity::create"
+  | "crmOpportunity::update"
+  | "crmOpportunity::retrieve"
+  | "crmOpportunity::list"
+  | "crmOpportunity::fieldRead"
+  | "crmOpportunity::fieldWrite";
+
+/**
+ * Required operations for the connector session
+ */
+const REQUIRED_OPERATIONS: ValidOperation[] = [
+  // Contact operations
+  "genericContact::create",
+  "genericContact::update",
+  "genericContact::retrieve",
+  "genericContact::list",
+  "genericContact::fieldRead",
+  "genericContact::fieldWrite",
+  // Company operations
+  "genericCompany::create",
+  "genericCompany::update",
+  "genericCompany::retrieve",
+  "genericCompany::list",
+  "genericCompany::fieldRead",
+  "genericCompany::fieldWrite",
+  // Opportunity operations
+  "crmOpportunity::create",
+  "crmOpportunity::update",
+  "crmOpportunity::retrieve",
+  "crmOpportunity::list",
+  "crmOpportunity::fieldRead",
+  "crmOpportunity::fieldWrite",
+];
+
+/**
+ * Custom field configuration
+ */
+const CUSTOM_FIELD_CONFIG = {
+  key: "custom_field_1",
+  name: "My Custom Field",
+  type: "text" as const,
+} as const;
 
 /**
  * ConnectionPage Component
  *
- * This page handles the connection and authorization flow for a specific connector.
- * It demonstrates how to:
- * 1. Create a session with required operations
- * 2. Handle connection authorization
- * 3. Manage connector-specific settings
+ * Handles the connection and authorization flow for a specific connector.
+ * This page:
+ * 1. Creates a session with required operations
+ * 2. Manages connector authorization
+ * 3. Handles custom field creation and management
+ * 4. Provides a pre-built UI for connection setup
  *
- * @param {ConnectionPageProps} props - Component props
+ * @param {ConnectionPageProps} props - Component props containing route parameters
  * @returns {Promise<JSX.Element>} The connection page component
+ * @throws {Error} When session creation fails or connector is not found
  */
 export default async function ConnectionPage({ params }: ConnectionPageProps) {
   const { connectorId } = await params;
 
   try {
     // Get owner ID from authentication system
-    // In a real application, this would come from your auth provider
     const ownerId = mocked.auth.getUserOrOrgId();
 
-    // Create a session with required operations for the connector
-    const { data, error } = await morph.sessions().create({
-      connection: {
-        connectorId,
-        ownerId,
-        operations: [
-          // Contact operations
-          "genericContact::create",
-          "genericContact::update",
-          "genericContact::retrieve",
-          "genericContact::list",
-          "genericContact::fieldRead",
-          // Company operations
-          "genericCompany::create",
-          "genericCompany::update",
-          "genericCompany::retrieve",
-          "genericCompany::list",
-          "genericCompany::fieldRead",
-          // Opportunity operations
-          "crmOpportunity::create",
-          "crmOpportunity::update",
-          "crmOpportunity::retrieve",
-          "crmOpportunity::list",
-          "crmOpportunity::fieldRead",
-        ],
-      },
-    });
+    // Create a session with required operations
+    const { data: sessionData, error: sessionError } = await morph
+      .sessions()
+      .create({
+        connection: {
+          connectorId,
+          ownerId,
+          operations: REQUIRED_OPERATIONS,
+        },
+      });
 
-    if (error) {
-      console.error("Failed to create session:", error);
+    if (sessionError) {
+      console.error("Failed to create session:", sessionError);
       throw new Error("Failed to create session");
     }
 
+    // Verify connector exists
     const connectorDetails = mocked.connectors.get(connectorId);
     if (!connectorDetails) {
-      throw new Error("Connector not found");
+      throw new Error(`Connector not found: ${connectorId}`);
     }
 
     return (
@@ -87,13 +134,13 @@ export default async function ConnectionPage({ params }: ConnectionPageProps) {
           It provides a pre-built UI for connecting to the connector
         */}
         <Connect
-          sessionToken={data.sessionToken}
+          sessionToken={sessionData.sessionToken}
           connectionCallbacks={{
             async authorized(connectionData) {
               "use server";
 
               try {
-                // After successful authorization, fetch custom fields
+                // Fetch existing custom fields
                 const { data: fieldsData, error: fieldsError } = await morph
                   .connections({ connectorId, ownerId })
                   .models("genericCompany")
@@ -104,8 +151,31 @@ export default async function ConnectionPage({ params }: ConnectionPageProps) {
                   throw new Error("Failed to fetch custom fields");
                 }
 
-                // Log successful field retrieval
-                console.log("Custom fields retrieved:", fieldsData);
+                // Check if custom field already exists
+                const existingField = fieldsData.find(
+                  (field) => field.remote.key === CUSTOM_FIELD_CONFIG.key
+                );
+
+                if (!existingField) {
+                  // Create new custom field if it doesn't exist
+                  const { data: newFieldData, error: newFieldError } =
+                    await morph
+                      .connections({ connectorId, ownerId })
+                      .models("genericCompany")
+                      .createField(CUSTOM_FIELD_CONFIG);
+
+                  if (newFieldError) {
+                    console.error(
+                      "Failed to create custom field:",
+                      newFieldError
+                    );
+                    throw new Error("Failed to create custom field");
+                  }
+
+                  console.log("New custom field created:", newFieldData);
+                } else {
+                  console.log("Custom field already exists:", existingField);
+                }
               } catch (error) {
                 console.error("Error in authorization callback:", error);
                 throw error;
@@ -113,12 +183,6 @@ export default async function ConnectionPage({ params }: ConnectionPageProps) {
             },
           }}
         />
-
-        {/* 
-          Custom Connection UI
-          You can build your own connection experience using Morph Atoms
-          Documentation: https://docs.runmorph.dev/api-reference/atoms/quick-start
-        */}
       </>
     );
   } catch (error) {
